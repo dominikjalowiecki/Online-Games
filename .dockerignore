@@ -1,0 +1,9 @@
+venv
+node_modules
+.env
+.gitignore
+.dockerignore
+Dockerfile.prod
+Dockerfile.celery.prod
+docker-compose.yaml
+redis_volume

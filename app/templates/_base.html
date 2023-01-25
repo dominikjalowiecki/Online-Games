@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Games</title>
+    <base href="{{ url_for('index', _external=True) }}" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon-128px.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' )}}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="d-flex flex-column min-vh-100">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container d-flex justify-content-between">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">Online Games</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        {% set navigation_bar = [
+                            (url_for('tic_tac_toe'), 'tic_tac_toe', 'Tic Tac Toe'),
+                            (url_for('pong'), 'pong', 'Pong')
+                        ] %}
+                        {% set active_page = active_page|default('index') %}
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item {% if active_page == 'index' %}active{% endif %}">
+                                <a class="nav-link" href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle {% if active_page in ('tic_tac_toe', 'pong') %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Categories
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% for href, id, caption in navigation_bar %}
+                                        <a class="dropdown-item {% if id == active_page %} active {% endif %}" href="{{ href }}">{{ caption }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        </ul>
+                        <form action="{{ url_for('search') }}"method="GET" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Room description..." maxlength="50" name="s" aria-label="Search" required>
+                            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container flex-fill">
+            <noscript>Your browser does not support JavaScript, which is required for this site to work properly!</noscript>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer class="footer container-fluid pt-3 mt-5 bg-dark">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center">
+                        <a href="https://github.com/dominikjalowiecki" class="text-white">Dominik Jałowiecki © 2022</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    {% block include %}
+    {% endblock %}
+</body>
+</html>

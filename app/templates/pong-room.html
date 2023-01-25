@@ -1,0 +1,23 @@
+{% extends '_room-base.html' %}
+
+{% set title = 'Pong Game' %}
+
+{% block rooms_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pong-style.css' )}}">
+{% endblock %}
+
+{% block game_addons %}
+<p class="font-weight-bold mb-2">Game options</p>
+<p class="mb-0"><input type="checkbox" id="prediction" checked> <label for="prediction">Prediction</label></p>
+<p class="mb-0"><input type="checkbox" id="reconciliation" checked> <label for="reconciliation">Reconciliation</label></p>
+<p class="mb-0"><input type="checkbox" id="interpolation" checked> <label for="interpolation">Interpolation</label></p>
+<p class="small">Use UP and DOWN keyboard arrows or controller to steer your blue platform!</p>
+{% endblock %}
+
+{% block playground %}
+{% endblock %}
+
+{% block include_room %}
+<script src="{{ url_for('static', filename='js/phaser.min.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/pong-script.bundle.min.js') }}"></script>
+{% endblock %}

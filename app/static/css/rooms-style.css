@@ -1,0 +1,82 @@
+#chat {
+    border: 1px solid #ced4da;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+    padding: 15px 5px;
+    border-radius: 5px;
+}
+
+#chat-form label {
+    display: none;
+}
+
+.chat-message-container {
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+    padding-right: 30px;
+    float: left;
+}
+
+.chat-message {
+    border-radius: 10px;
+    margin-bottom: 0px;
+    max-width: 100%;
+    width: fit-content;
+    background-color: #218837ae;
+    padding: 5px 10px;
+    color: #fff;
+    word-wrap: break-word;
+}
+
+.chat-message.server-message {
+    background-color: #737373;
+}
+
+.chat-message-container.own-message {
+    padding-left: 30px;
+    padding-right: 0px;
+    float: right;
+}
+
+.chat-message-container.own-message .chat-message {
+    float: right;
+    background-color: #218837ae;
+}
+
+.leave-button {
+    color: #c82333;
+}
+
+.leave-button:hover {
+    color: #c82333;
+    text-decoration: underline;
+}
+
+#game-popup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background-color: #0001;
+    transition: 1s ease visibility;
+}
+
+#game-popup-content {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#game-popup-button-start {
+    display: none;
+}

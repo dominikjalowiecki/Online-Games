@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">Online Games</h1>
+        <p class="lead">Play favourite online games with your friends!</p>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="list-group list-group-flush">
+                {% for message in messages %}
+                    <li class="list-group-item">
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="row mt-2 justify-content-center">
+        <div class="col-md-6 mb-5">
+            <h2 class="display-6 mt-2 mb-5 text-center">Select category</h2>
+            <a href="{{ url_for('tic_tac_toe') }}" class="btn btn-success btn-lg btn-block">Tic Tac Toe</a>
+            <a href="{{ url_for('pong') }}" class="btn btn-success btn-lg btn-block">Pong</a>
+        </div>
+    </div>
+{% endblock %}

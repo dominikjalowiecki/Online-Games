@@ -1,0 +1,52 @@
+#playground canvas {
+    width: 100%;
+}
+
+#game-controller {
+    display: none;
+    width: 80px;
+    height: 180px;
+    background-color: #333;
+    top: 100px;
+    left: 100px;
+    position: fixed;
+    z-index: 999;
+    padding-top: 50px;
+    display: grid;
+    grid-template-rows: repeat(2, auto [row-start]);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1);
+    cursor: grab; 
+}
+
+
+#game-controller::after {
+    font-size: 26px;
+    content: "...";
+    display: block;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ▼▲ */
+#game-controller-up-arrow {
+    border-bottom: 1px #ddd solid;
+}
+
+.game-controller-arrow {
+    background-color: #28a745;
+    transition: 0.3s ease opacity;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.game-controller-arrow:hover {
+    opacity: 0.75
+}

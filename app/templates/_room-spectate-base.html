@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+
+{% set active_page = '' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rooms-style.css' )}}">
+    {% block rooms_head %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        {% set title = title|default('') %}
+        <h2 class="mt-5">{{ title }}</h2>
+    </div>
+</div>
+<div class="row py-3 mb-3">
+    <div class="col d-flex align-items-center justify-content-between">
+        <p class="mb-0"><span class="badge badge-dark">Timeout: <span class="timeout-counter">999</span>s</span><span class="badge badge-danger ml-1">BO{{ bo }}</span></p>
+        <a href="{{ url_for('exit_room') }}" class="leave-button">Leave</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {% block game_addons %}
+        {% endblock %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 d-flex justify-content-center align-items-center mb-4 mb-md-0 position-relative">
+        <div id="game-popup">
+            <div id="game-popup-content">
+                <p id="game-popup-value" class="mb-0">Waiting for game to start...</p>
+            </div>
+        </div>
+        <div id="playground">
+            {% block playground %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="chat-container">
+            <div id="chat">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block include %}
+{% endblock %}

@@ -1,0 +1,13 @@
+FROM python:3.9
+
+WORKDIR /usr/src/app
+
+ENV SOCKETIO_REDIS_CHANNEL online-games-socketio
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+COPY ./tasks/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./tasks ./tasks
+CMD ["celery", "-A", "tasks", "worker", "--autoscale=10,0"]

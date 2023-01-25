@@ -1,0 +1,17 @@
+<div class="chat-container">
+    <div class="chat">
+    </div>
+{% from "_form-helpers.html" import render_field %}
+<form action="" method="POST" class="chat-form">
+    {{ form.csrf_token }}
+    <div class="form-row">
+        {{ form.hidden_tag() }}
+        <div class="col-8">
+            {{ render_field(form.message, placeholder="Message...", class_="form-control chat-input") }}
+        </div>
+        <div class="col-4">
+            {{ form.submit(class_="btn btn-primary w-100") }}
+        </div>
+    </div>
+</form>
+</div>

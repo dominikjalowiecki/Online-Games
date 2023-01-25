@@ -1,0 +1,21 @@
+{% extends '_room-spectate-base.html' %}
+
+{% set title = 'Pong Game Spectate' %}
+
+{% block rooms_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pong-style.css' )}}">
+{% endblock %}
+
+{% block game_addons %}
+<p class="font-weight-bold mb-2">Game options</p>
+<p class="mb-0"><input type="checkbox" id="interpolation" checked> <label for="interpolation">Interpolation</label></p>
+<p class="small">Use UP and DOWN keyboard arrows or controller to steer your blue platform!</p>
+{% endblock %}
+
+{% block playground %}
+{% endblock %}
+
+{% block include %}
+<script src="{{ url_for('static', filename='js/phaser.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pong-spectate-script.bundle.min.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends '_room-spectate-base.html' %}
+
+{% set title = 'Tic Tac Toe Game Spectate' %}
+
+{% block rooms_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tic-tac-toe-style.css' )}}">
+{% endblock %}
+
+{% block playground %}
+    <div id="tic-tac-toe-game" class="disabled">
+        <div class="tic-tac-toe-field f1-1" data-row="0" data-col="0"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f1-2" data-row="0" data-col="1"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f1-3" data-row="0" data-col="2"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f2-1" data-row="1" data-col="0"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f2-2" data-row="1" data-col="1"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f2-3" data-row="1" data-col="2"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f3-1" data-row="2" data-col="0"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f3-2" data-row="2" data-col="1"><span class="field-value"></span></div>
+        <div class="tic-tac-toe-field f3-3" data-row="2" data-col="2"><span class="field-value"></span></div>
+    </div>
+{% endblock %}
+
+{% block include %}
+<script src="{{ url_for('static', filename='js/tic-tac-toe-spectate-script.bundle.min.js') }}"></script>
+{% endblock %}

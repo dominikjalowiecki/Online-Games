@@ -1,0 +1,77 @@
+{% extends '_base.html' %}
+
+{% set active_page = '' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rooms-style.css' )}}">
+    {% block rooms_head %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        {% set title = title|default('') %}
+        <h2 class="mt-5">{{ title }}</h2>
+    </div>
+</div>
+<div class="row py-3">
+    <div class="col d-flex align-items-center justify-content-between">
+        <p class="mb-0"><span class="badge badge-dark">Timeout: <span class="timeout-counter">999</span>s</span><span class="badge badge-danger ml-1">BO{{ bo }}</span></p>
+        <a href="{{ url_for('exit_room') }}" class="leave-button">Leave</a>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-md-4">
+        <label for="share-link" class="font-weight-bold">Share link</label>
+        <div class="d-flex">
+            <input type="text" class="form-control" id="share-link" value="{{ url_for('og_join_room', room_id=room_id, _external=True) }}" disabled>
+            <button type="submit" id="copy-share-link-button" class="btn btn-outline-dark ml-2">Copy</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {% block game_addons %}
+        {% endblock %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 d-flex justify-content-center align-items-center mb-4 mb-md-0 position-relative">
+        <div id="game-popup">
+            <div id="game-popup-content">
+                <p id="game-popup-value" class="mb-0">Waiting for other player to join...</p>
+                <button id="game-popup-button-start" class="btn btn-success mt-3">Start</button>
+            </div>
+        </div>
+        <div id="playground">
+            {% block playground %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="chat-container">
+                <div id="chat">
+                </div>
+            {% from "_form-helpers.html" import render_field %}
+            <form action="" method="POST" id="chat-form">
+                {{ form.hidden_tag() }}
+                <div class="form-row">
+                    <div class="col-8">
+                        {{ render_field(form.message, placeholder="Message...", pattern="^[ ]*[^ ]+.*$", class_="form-control", id="chat-input") }}
+                    </div>
+                    <div class="col-4">
+                        {{ form.submit(class_="btn btn-success w-100") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block include %}
+    <script src="{{ url_for('static', filename='js/room-helper.bundle.min.js') }}"></script>
+    {% block include_room %}
+    {% endblock %}
+{% endblock %}

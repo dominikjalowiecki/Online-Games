@@ -1,0 +1,17 @@
+#create-room-form label {
+    display: none;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #218838 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.page-link,
+.page-link:hover {
+    color: #218838;
+}
