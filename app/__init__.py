@@ -19,7 +19,7 @@ if(app.config['DEBUG'] == False):
     logging.basicConfig(filename=app.config['LOG_FILE'], filemode='a', format=f'%(asctime)s - %(levelname)s -  %(name)s %(threadName)s :: %(message)s', datefmt='%H:%M:%S', level=logging.WARNING)
 
     app.wsgi_app = WhiteNoise(app.wsgi_app, root=os.path.join(app.config['BASE_DIR'], 'app/static'), prefix='static/')
-    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
     csp = {
         'default-src': '\'self\'',
         'img-src': ('\'self\'', 'data:', 'blob:')

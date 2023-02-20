@@ -57,7 +57,7 @@ class Scene extends Phaser.Scene
 
     preload()
     {
-        this.load.bitmapFont('my_font', '/static/fonts/bitmapFonts/my_font.png', '/static/fonts/bitmapFonts/my_font.fnt');
+        this.load.bitmapFont('my_font', 'static/fonts/bitmapFonts/my_font.png', 'static/fonts/bitmapFonts/my_font.fnt');
     }
 
     create()
@@ -141,7 +141,7 @@ class Scene extends Phaser.Scene
         SOCKET.on('finish_game', (data) => {
             this.scene.pause();
 
-            POPUP_MANAGER.popupCustomText = data.winner_nick + ' has won the round.';
+            POPUP_MANAGER.popupCustomText = data.winner_nick + ' has won the game.';
             POPUP_MANAGER.switchPopupMode(PopupManager.popup_modes.CUSTOM_TEXT);
 
             game_has_ended = true;

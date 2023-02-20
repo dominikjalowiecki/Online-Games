@@ -182,7 +182,7 @@ class Scene extends Phaser.Scene
 
     preload()
     {
-        this.load.bitmapFont('my_font', '/static/fonts/bitmapFonts/my_font.png', '/static/fonts/bitmapFonts/my_font.fnt');
+        this.load.bitmapFont('my_font', 'static/fonts/bitmapFonts/my_font.png', 'static/fonts/bitmapFonts/my_font.fnt');
     }
 
     create()
