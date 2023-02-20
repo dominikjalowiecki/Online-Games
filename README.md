@@ -1,6 +1,10 @@
+[![Preview project](https://img.shields.io/static/v1?label=Flask&message=Preview&color=success&style=flat&logo=Flask)][preview]
+
 # Online-Games
 
-Web application with online games for two players.
+Web application with online games for two players. [Click here to preview.][preview]
+
+[preview]: https://djalowiecki.toadres.pl/online-games
 
 ### Table of content
 
