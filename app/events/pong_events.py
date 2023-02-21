@@ -136,5 +136,3 @@ class PongNamespace(NamespaceBase):
 
         send(['', '', '{} has exited the room.'.format(username), datetime.now().strftime('%H:%M:%S')], room=room_id)
         emit('terminate_client', {'user_id': user_id}, room=room_id)
-
-        terminate_room(room_id)
