@@ -63,12 +63,10 @@ git clone https://github.com/dominikjalowiecki/Online-Games.git
 cd ./Online-Games
 ```
 
-#### Setup virtual environment
+#### Initialize environment
 
 ```bash
-python -m venv venv
-source ./venv/bin/activate
-pip install --no-cache-dir -r requirements.txt
+make
 ```
 
 #### Setup .env file
@@ -96,50 +94,31 @@ SOCKETIO_REDIS_CHANNEL='online-games-socketio'
 REDIS_MESSAGE_QUEUE_URL=<redis-url>
 ```
 
-#### Change directory
-
-```bash
-cd ./js
-```
-
-#### Install dependencies and build static files
-
-```bash
-npm ci && npm run build
-```
-
 #### (Optional step) If used in production mode, you should compress static files manually
 
 ```bash
-cd ..
 python -m whitenoise.compress ./app/static
 ```
 
-#### On first terminal run celery worker
-
-##### Remember to activate virtual environment!
+#### Run development environment
 
 ```bash
-celery -A tasks worker --autoscale=10,0 --loglevel=INFO
+make run
 ```
 
-#### On second terminal start server
-
-##### Remember to activate virtual environment!
-
-```bash
-python online-games.py
-```
+##### Use `make clean` to delete development environment.
 
 ### OR
 
-#### Run docker-compose "production" environment
+#### Run "production" environment
 
 ```bash
-docker compose up -d
+make start
 ```
 
-Application available on http://localhost:5000.
+##### Use `make stop` to stop docker-compose services.
+
+Application available on http://localhost:5000
 
 ---
 
